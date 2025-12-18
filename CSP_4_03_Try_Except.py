@@ -8,7 +8,13 @@ def sum(arr : list) -> int:
     :param arr:
     :return:
     """
-    pass
+    sumSoFar = 0
+    for i in range(len(arr)+1):
+        try:
+            sumSoFar += arr[i]
+        except:
+            sumSoFar+=0
+    return sumSoFar
 
 def cleanData(rawData : list) ->list:
     """
@@ -17,7 +23,16 @@ def cleanData(rawData : list) ->list:
     :param rawData:
     :return:
     """
-    pass
+    newList = []
+    for i in range(len(rawData)+1):
+        try:
+            newData = rawData[i]
+            newList.append(float(newData))
+        except:
+            pass
+    return newList
+
+
 def unreliableCalculator(divisors : list) -> list:
     """
     Modify the function such that it takes in a list as an argument and returns a new list where each
@@ -27,7 +42,15 @@ def unreliableCalculator(divisors : list) -> list:
     :param divisors:
     :return:
     """
-    pass
+    newList = []
+    for value in divisors:
+        try:
+            newList.append(100/value)
+        except ZeroDivisionError:
+            newList.append("ZeroDivisionError")
+        except TypeError:
+            newList.append("TypeError")
+    return newList
 
 
 def upperAll(arr : list) -> None:
@@ -38,10 +61,9 @@ def upperAll(arr : list) -> None:
     :param arr:
     :return:
     """
-    x = "hello"
-    print(x)
-    x = x.upper()
-    print(x)
+    for i in range(len(arr)):
+        if type(arr[i]) == str:
+            arr[i] = arr[i].upper()
 
 
 def firstItems(arr : list) -> list:
@@ -54,5 +76,11 @@ def firstItems(arr : list) -> list:
     :param arr:
     :return:
     """
-    pass
+    result = []
+    for i in range(len(arr)):
+        if type(arr[i]) == list:
+            result.append(arr[i][0])
+        else:
+            result.append(arr[i])
+    return result
 
